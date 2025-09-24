@@ -1,0 +1,245 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width,initial-scale=1"/>
+  <title>PI Multimarcas — Loja</title>
+
+  <!-- Styles -->
+  <link rel="stylesheet" href="style.css">
+
+  <!-- Font Awesome (ícones de pagamento, redes) -->
+  <link rel="stylesheet" href="imagens/camiseta12.jpg">
+
+</head>
+<body>
+  <!-- Header (fixo) -->
+  <header class="site-header" id="siteHeader">
+    <div class="topbar">
+      <div class="container topbar-inner">
+        <div class="brand">
+          <img href="imagens/Logo PI.jpg">
+          <div class="brand-text">
+            <strong>PI Multimarcas</strong>
+            <small>Moda & Acessórios</small>
+          </div>
+        </div>
+
+        <div class="header-actions">
+          <div class="search-inline">
+            <input id="search" placeholder="Buscar produtos, marcas ou categorias..." aria-label="Buscar produtos">
+            <button id="btnSearch" class="btn">Buscar</button>
+          </div>
+
+          <div class="icons">
+            <button id="btnAccount" class="icon-btn" title="Minha conta"><i class="fa-regular fa-user"></i></button>
+            <button id="open-cart" class="icon-btn" aria-controls="cartPanel" aria-expanded="false" title="Carrinho">
+              <i class="fa-solid fa-cart-shopping"></i>
+              <span id="cartCount" class="cart-count">0</span>
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Mega menu / categorias -->
+    <nav class="main-nav">
+      <div class="container nav-inner">
+        <ul class="menu">
+          <li class="menu-item">Home</li>
+          <li class="menu-item has-mega">
+            Categorias
+            <div class="mega">
+              <div class="mega-col">
+                <h4>Roupas</h4>
+                <ul>
+                  <li class="cat" data-cat="Roupas">Camisetas</li>
+                  <li class="cat" data-cat="Roupas">Jaquetas</li>
+                  <li class="cat" data-cat="Roupas">Bermudas</li>
+                </ul>
+              </div>
+              <div class="mega-col">
+                <h4>Calçados</h4>
+                <ul>
+                  <li class="cat" data-cat="Calçados">Tênis</li>
+                  <li class="cat" data-cat="Calçados">Sandálias</li>
+                </ul>
+              </div>
+              <div class="mega-col">
+                <h4>Acessórios</h4>
+                <ul>
+                  <li class="cat" data-cat="Acessórios">Bonés</li>
+                  <li class="cat" data-cat="Acessórios">Óculos</li>
+                  <li class="cat" data-cat="Acessórios">Relógios</li>
+                </ul>
+              </div>
+              <div class="mega-col banner-col">
+                <img src="imagens/camiseta04.jpg" alt="Banner categoria">
+              </div>
+            </div>
+          </li>
+          <li class="menu-item cat" data-cat="Acessórios">Acessórios</li>
+          <li class="menu-item cat" data-cat="Calçados">Calçados</li>
+          <li class="menu-item cat" data-cat="Bermudas">Bermudas</li>
+          <li class="menu-item cat" data-cat="Perfumes">Perfumes</li>
+          <li class="menu-item cat" data-cat="Bonés">Bonés</li>
+        </ul>
+      </div>
+    </nav>
+  </header>
+
+  <!-- Hero carousel -->
+  <section class="hero">
+    <div class="container hero-wrap">
+      <div class="carousel" id="carousel">
+        <div class="slide" style="background-image:url('imagens/camiseta12.jpg')">
+          <div class="slide-content"><h2>Promoção de Verão</h2><p>Roupas e acessórios com até 50% OFF</p></div>
+        </div>
+        <div class="slide" style="background-image:url('imagens/camiseta16.jpg')">
+          <div class="slide-content"><h2>Frete Grátis</h2><p>Compras acima de R$300</p></div>
+        </div>
+        <div class="slide" style="background-image:url('imagens/camiseta05.jpg')">
+          <div class="slide-content"><h2>Novidades</h2><p>Últimos lançamentos em calçados</p></div>
+        </div>
+      </div>
+
+      <div class="hero-thumbs" id="heroThumbs">
+        <button data-index="0" class="thumb active"></button>
+        <button data-index="1" class="thumb"></button>
+        <button data-index="2" class="thumb"></button>
+      </div>
+    </div>
+  </section>
+
+  <!-- Banners / destaques -->
+  <section class="banners container">
+    <div class="banner"><img src="https://picsum.photos/seed/b1/600/160" alt="Banner 1"></div>
+    <div class="banner"><img src="https://picsum.photos/seed/b2/600/160" alt="Banner 2"></div>
+  </section>
+
+  <!-- Main content: produtos + sidebar -->
+  <main class="container main-grid">
+    <aside class="sidebar">
+      <h3>Filtro rápido</h3>
+      <div class="filter-section">
+        <label>Buscar</label>
+        <input id="sideSearch" placeholder="Buscar...">
+      </div>
+
+      <div class="filter-section">
+        <label>Categoria</label>
+        <ul class="sidebar-cats">
+          <li class="cat" data-cat="all">Todas</li>
+          <li class="cat" data-cat="Acessórios">Acessórios</li>
+          <li class="cat" data-cat="Roupas">Camisetas</li>
+          <li class="cat" data-cat="Calçados">Calçados</li>
+          <li class="cat" data-cat="Bermudas">Bermudas</li>
+          <li class="cat" data-cat="Perfumes">Perfumes</li>
+          <li class="cat" data-cat="Bonés">Bonés</li>
+        </ul>
+      </div>
+
+      <div class="promo">
+        <h4>Oferta</h4>
+        <img src="imagens/" alt="Promo">
+        <p>Frete grátis acima de R$300</p>
+      </div>
+    </aside>
+
+    <section class="catalogo" id="catalogo" aria-live="polite">
+      <!-- produtos renderizados via JS -->
+    </section>
+  </main>
+
+  <!-- Carrinho lateral -->
+  <aside id="cartPanel" class="cart-panel" aria-hidden="true">
+    <div class="cart-inner">
+      <h3>Seu Carrinho</h3>
+      <div id="cartList" class="cart-list"></div>
+      <div class="cart-summary">
+        <div>Subtotal: <strong id="subtotal">R$ 0.00</strong></div>
+        <div id="cartLabel" class="etiqueta"></div>
+        <div id="freteSmall" class="frete small"></div>
+        <div class="cart-actions">
+          <button id="btnCheckout" class="btn">Finalizar compra</button>
+          <button id="btnClear" class="btn btn-dark">Limpar</button>
+        </div>
+      </div>
+    </div>
+    <button id="closeCart" class="close-cart" aria-label="Fechar carrinho"><i class="fa-solid fa-xmark"></i></button>
+  </aside>
+
+  <!-- Checkout section (in-page) -->
+  <section id="checkout" class="checkout container" hidden>
+    <h2>Checkout</h2>
+    <div class="checkout-grid">
+      <form id="checkoutForm" class="checkout-form">
+        <label>CEP <input id="cep" placeholder="00000-000" inputmode="numeric" maxlength="9"></label>
+        <div id="cepNotice" role="status" aria-live="polite" class="mensagem"></div>
+
+        <label>Rua <input id="rua"></label>
+        <div class="row">
+          <label>Número <input id="numero"></label>
+          <label>Bairro <input id="bairro"></label>
+        </div>
+        <div class="row">
+          <label>Cidade <input id="cidade"></label>
+          <label>UF <input id="uf" maxlength="2"></label>
+        </div>
+
+        <label>Nome <input id="nome" required></label>
+
+        <div class="totals">
+          <div>Produtos: <strong id="subtotal2">R$ 0.00</strong></div>
+          <div id="freteLabel" class="frete"></div>
+          <div>Total com frete: <strong id="grandTotal">R$ 0.00</strong></div>
+        </div>
+
+        <div class="payment-methods">
+          <h4>Formas de pagamento</h4>
+          <div class="pay-icons">
+            <span><i class="fa-solid fa-barcode"></i> Boleto</span>
+            <span><i class="fa-solid fa-credit-card"></i> Cartão</span>
+            <span><i class="fa-brands fa-cc-visa"></i></span>
+            <span><i class="fa-brands fa-cc-mastercard"></i></span>
+            <span><i class="fa-brands fa-paypal"></i></span>
+            <span><i class="fa-brands fa-pix"></i></span>
+          </div>
+        </div>
+
+        <div class="form-actions">
+          <button type="submit" class="btn">Confirmar pedido</button>
+          <button type="button" id="cancelCheckout" class="btn btn-dark">Cancelar</button>
+        </div>
+      </form>
+
+      <div class="order-preview">
+        <h4>Resumo do pedido</h4>
+        <div id="orderPreview"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="site-footer">
+    <div class="container footer-inner">
+        <div class="footer-logo"></div>
+      <div>
+        <p>📞 Contato: <strong>(83) 99685-6489</strong></p>
+        <p>📲 Siga: <a href="https://instagram.com/pi.multimarcas" target="_blank">@pi.multimarcas</a> • <a href="https://tiktok.com/@pi.multimarcas" target="_blank">@pi.multimarcas</a></p>
+      </div>
+      <div class="pay-list">
+        <span><i class="fa-solid fa-barcode"></i> Boleto</span>
+        <span><i class="fa-solid fa-credit-card"></i> Cartão</span>
+        <span><i class="fa-brands fa-cc-visa"></i></span>
+        <span><i class="fa-brands fa-cc-mastercard"></i></span>
+        <span><i class="fa-brands fa-paypal"></i></span>
+        <span><i class="fa-brands fa-pix"></i></span>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Scripts -->
+  <script src="script.js"></script>
+</body>
+</html>
