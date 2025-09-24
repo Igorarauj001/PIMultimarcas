@@ -1,8 +1,3 @@
-/* PI Multimarcas - script.js
-   - catálogo, filtros, carrinho (localStorage), checkout (ViaCEP)
-   - carousel hero, mega-menu, etiqueta frete grátis
-*/
-
 class Produto {
   constructor(id, nome, preco, categoria, descricao, img) {
     this.id = id; this.nome = nome; this.preco = preco;
@@ -18,24 +13,24 @@ class Carrinho {
   total(){ return this.itens.reduce((s,i)=>s+i.preco*i.qtd,0); }
 }
 
-/* ---------- Dados (produtos) ---------- */
-/* Use imagens reais trocando as URLs abaixo por suas imagens (ex.: imagens/camiseta.jpg) */
+//POO//
 const produtos = [
-  new Produto(1,'Camiseta Verde',59.9,'camiseta','Camiseta confortável verde','imagens/Camiseta tommy verde.JPG'),
-  new Produto(2,'Caneca',39.0,'camiseta','Caneca personalizada','imagens/NONI3421.JPG'),
-  new Produto(3,'Boné Verde',79.5,'camiseta','Boné verde estiloso','imagens/camiseta01.jpg'),
-  new Produto(4,'Tênis Esportivo',199.9,'camiseta','Tênis confortável para corrida','camiseta02.jpg'),
-  new Produto(5,'Bermuda Jeans',99.9,'camiseta','Bermuda casual azul','imagens/camiseta03.jpg'),
-  new Produto(6,'Perfume Importado',299.9,'camiseta','Fragrância marcante','imagens/camiseta04.jpg'),
-  new Produto(7,'Relógio Esportivo',149.9,'camiseta','Relógio digital esportivo','imagens/camiseta05.jpg'),
-  new Produto(8,'Pulseira Couro',49.9,'camiseta','Pulseira de couro', 'imagens/camiseta06.jpg'),
-  new Produto(9,'Óculos de Sol',119.9,'camiseta','Óculos polarizado','imagens/camiseta07.jpg'),
-  new Produto(10,'Carteira Couro',89.9,'camiseta','Carteira em couro','imagens/camiseta08.jpg'),
-  new Produto(11,'Lacoste Azul',59.9,'camiseta','Lacoste Importada','imagens/camiseta09.jpg'),
-  new Produto(12,'Lacoste preta ',159.90,'camiseta','Lacoste Importada','imagens/camiseta10.jpg'),
+  new Produto(1,'Camiseta Tommy',159.9,'camiseta','Camiseta confortável verde','imagens/Camiseta tommy verde.JPG'),
+  new Produto(2,'camiseta Tommy',159.9,'camiseta','Camiseta tommy rosa','imagens/camiseta43.jpg'),
+  new Produto(3,'Tommy Azul',159.9,'camiseta','Camiseta Tommy Hilfiger Azul','imagens/camiseta47.jpg'),
+  new Produto(4,'Tommy Preta',159.90,'camiseta','Camiseta Tommy Preta','imagens/camiseta44.jpg'),
+  new Produto(5,'Tommy Vinho',159.9,'camiseta','Camiseta Tommy Vinho','imagens/camiseta46.jpg'),
+  new Produto(6,'Boss',99.9,'camiseta','Camiseta Boss','imagens/camiseta22.jpg'),
+  new Produto(7,'Boss',99.9,'camiseta','Camiseta Boss','imagens/camiseta21.jpg'),
+  new Produto(8,'Boss',99.9,'camiseta','Camiseta Boss', 'imagens/camiseta23.jpg'),
+  new Produto(9,'Boss',99.9,'camiseta','Camiseta Boss','imagens/camiseta24.jpg'),
+  new Produto(10,'Boss',99.9,'camiseta','Camiseta Boss','imagens/camiseta25.jpg'),
+  new Produto(11,'Lacoste Azul',139.90,'camiseta','Lacoste Importada','imagens/camiseta09.jpg','imagens/camiseta19.jpg'),
+  new Produto(12,'Lacoste preta ',139.90,'camiseta','Lacoste Importada','imagens/camiseta10.jpg'),
+  new Produto(13,'Lacoste Vermelha ',139.90,'camiseta','Lacoste Importada','imagens/camiseta11.jpg'),
+  new Produto(14,'Lacoste Branca ',139.90,'camiseta','Lacoste Importada','imagens/camiseta13.jpg'),
 ];
 
-/* ---------- Elementos ---------- */
 const catalogEl = document.getElementById('catalogo');
 const cartBtn = document.getElementById('open-cart');
 const cartPanel = document.getElementById('cartPanel');
@@ -71,8 +66,6 @@ const hero = document.getElementById('carousel');
 const heroThumbs = document.getElementById('heroThumbs');
 
 const cart = new Carrinho();
-
-/* ---------- Render catálogo ---------- */
 let filtro = 'all';
 let termo = '';
 
@@ -95,17 +88,14 @@ function renderCatalogo(){
   `).join('') || '<p>Nenhum produto encontrado</p>';
 }
 
-/* ---------- Detalhe / modal simples ---------- */
 window.openDetail = function(id){
   const p = produtos.find(x=>x.id===id);
-  // simples modal usando alert (p/ manter código leve) — você pode substituí-lo por modal real
+ 
   const info = `${p.nome}\nR$ ${p.preco.toFixed(2)}\n\n${p.descricao}`;
   if(confirm(info + '\n\nAdicionar ao carrinho?')){
     cart.adicionar(p); renderCart(); announce('Produto adicionado');
   }
 }
-
-/* ---------- Carrinho ---------- */
 function addToCart(id){
   const p = produtos.find(x=>x.id===id);
   cart.adicionar(p);
@@ -148,7 +138,6 @@ function updateFreteLabel(){
   else { const falta = (300 - s).toFixed(2); cartLabel.textContent = `Faltam R$ ${falta} para frete grátis`; freteSmall.textContent = 'Frete: R$ 20.00'; }
 }
 
-/* ---------- Cart panel controls ---------- */
 cartBtn.addEventListener('click', ()=>{
   const open = cartPanel.classList.toggle('open');
   cartPanel.setAttribute('aria-hidden', String(!open));
@@ -160,11 +149,11 @@ document.getElementById('closeCart').addEventListener('click', ()=>{ cartPanel.c
 btnClear.addEventListener('click', ()=>{ cart.itens = []; cart.salvar(); renderCart(); });
 btnCheckout.addEventListener('click', ()=>{ cartPanel.classList.remove('open'); showCheckout(); });
 
-/* ---------- Checkout & ViaCEP ---------- */
+
 function showCheckout(){
   checkoutSection.hidden = false;
   document.getElementById('catalogo').scrollIntoView({behavior:'smooth'});
-  // preencher resumo
+   
   subtotal2.textContent = `R$ ${cart.total().toFixed(2)}`;
   calculateFreteAndTotals();
   renderOrderPreview();
@@ -180,13 +169,13 @@ function calculateFreteAndTotals(){
 
 checkoutForm && checkoutForm.addEventListener('submit', (e)=>{
   e.preventDefault();
-  // validação simples
+  
   if(cart.itens.length === 0){ alert('Carrinho vazio.'); return; }
   alert('Pedido confirmado! Obrigado pela compra.'); cart.itens = []; cart.salvar(); renderCart(); location.reload();
 });
 document.getElementById('cancelCheckout').addEventListener('click', ()=>{ checkoutSection.hidden = true; });
 
-/* ViaCEP handling */
+
 cepInput && cepInput.addEventListener('input', handleCepInput);
 let cepTimer = null;
 function handleCepInput(e){
@@ -195,6 +184,7 @@ function handleCepInput(e){
   if(cepTimer) clearTimeout(cepTimer);
   cepTimer = setTimeout(()=> fetchCep(val), 300);
 }
+//api de cep//
 async function fetchCep(cep){
   cepNotice.textContent = 'Buscando...';
   try {
@@ -211,7 +201,6 @@ async function fetchCep(cep){
   }
 }
 
-/* ---------- Busca e filtros ---------- */
 searchInput && document.getElementById('btnSearch').addEventListener('click', ()=>{ termo = searchInput.value.trim().toLowerCase(); renderCatalogo(); });
 sideSearch && sideSearch.addEventListener('input', ()=>{ termo = sideSearch.value.trim().toLowerCase(); renderCatalogo(); });
 
@@ -219,7 +208,6 @@ catBtns.forEach(b=> b.addEventListener('click', ()=>{ filtro = b.dataset.cat || 
 sidebarCats.forEach(b=> b.addEventListener('click', ()=>{ filtro = b.dataset.cat || 'all'; renderCatalogo(); }));
 catMenuBtns.forEach(b=> b.addEventListener('click', ()=>{ filtro = b.dataset.cat || 'all'; renderCatalogo(); }));
 
-/* ---------- Order preview ---------- */
 function renderOrderPreview(){
   if(!orderPreview) return;
   if(cart.itens.length===0){ orderPreview.innerHTML = '<p>Carrinho vazio</p>'; return; }
@@ -227,7 +215,6 @@ function renderOrderPreview(){
     `<hr><div><strong>Subtotal:</strong> R$ ${cart.total().toFixed(2)}</div>`;
 }
 
-/* ---------- Carousel (hero) ---------- */
 (function initCarousel(){
   const slides = Array.from(document.querySelectorAll('.carousel .slide'));
   let idx = 0;
@@ -241,11 +228,11 @@ function renderOrderPreview(){
   document.querySelectorAll('.hero-thumbs .thumb').forEach(btn => btn.addEventListener('click', ()=>{ const i = +btn.dataset.index; idx = i; show(i); }));
 })();
 
-/* ---------- Misc ---------- */
-function openCart(){ cartPanel.classList.add('open'); renderCart(); }
-function announce(msg){ /* hook a11y - could update live region */ console.log(msg); }
 
-/* Inicialização */
+function openCart(){ cartPanel.classList.add('open'); renderCart(); }
+function announce(msg){  console.log(msg); }
+
+
 renderCatalogo();
 renderCart();
 calculateFreteAndTotals();
