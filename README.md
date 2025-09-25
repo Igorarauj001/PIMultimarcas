@@ -3,12 +3,12 @@ Site da PI Multimarcas, loja de roupas com catálogo online, design responsivo e
 
 PI Multimarcas  
 
-Este repositório contém o desenvolvimento do site **PI Multimarcas**, uma loja de roupas multimarcas criada como projeto acadêmico.  
+Este repositório contém o desenvolvimento do site **PI Multimarcas**, uma loja de roupas multimarcas que já existia como negócio físico., localizada na cidade de Monteiro-PB, oferecendo produtos de qualidade aos seus clientes. 
 O objetivo principal é aplicar conceitos de **desenvolvimento web front-end** para criar uma página moderna, organizada e responsiva.  
 
  Objetivos do Projeto  
 
-- Desenvolver um site funcional para uma loja de roupas  
+- Desenvolver um site funcional para uma loja de roupas, com o intuito de expandir a marca para o ambiente digital, criando um site moderno e  funcional para ampliar a presença online, alcançar novos clientes e melhorar a experiência de compra
 - Aplicar conceitos de **HTML5**, **CSS3** e **JavaScript**  
 - Praticar o uso de layout responsivo para diferentes dispositivos  
 - Estimular a organização e boas práticas no desenvolvimento  
